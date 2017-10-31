@@ -81,3 +81,14 @@ QUnit.test( "Same order", function( assert ) {
   assert.equal($itemList.find('li').length, intialLength);
   assert.ok($itemList.children('li:first-child').hasClass('new-item'), 'The element has been placed in the right place');
 });
+
+QUnit.module( "restore" );
+QUnit.test( "Restore to parent", function( assert ) {
+  let $itemList = $('#restore .item-list');
+  const intialLength = $itemList.find('li').length;
+  let $newItem = $('#restore .new-item').placeit($itemList, 0);
+  assert.equal($itemList.find('li').length, intialLength + 1);
+  assert.ok($itemList.children('li:nth-child(1)').hasClass('new-item'), 'The element has been placed in the right place');
+  $newItem.restore();
+  assert.ok($('#restore > .new-item').is($newItem), 'The element had been restored to it\'\s original placement');
+});
