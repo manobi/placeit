@@ -2,7 +2,9 @@ QUnit.module( "placeit" );
 QUnit.test( "No order", function( assert ) {
   let $itemList = $('#test-no-order .item-list');
   const intialLength = $itemList.find('li').length;
+
   $('#test-no-order .new-item').placeit($itemList);
+
   assert.equal($itemList.find('li').length, intialLength + 1);
   assert.ok($itemList.find('li:last-child').hasClass('new-item'), 'The element has been placed in the right place');
 });
@@ -10,7 +12,9 @@ QUnit.test( "No order", function( assert ) {
 QUnit.test( "First order", function( assert ) {
   let $itemList = $('#first-order .item-list');
   const intialLength = $itemList.find('li').length;
+
   $('#first-order .new-item').placeit($itemList, 0);
+
   assert.equal($itemList.find('li').length, intialLength + 1);
   assert.ok($itemList.children('li:nth-child(1)').hasClass('new-item'), 'The element has been placed in the right place');
 });
@@ -68,6 +72,7 @@ QUnit.test( "Same context", function( assert ) {
 QUnit.test( "Same order", function( assert ) {
   let $itemList = $('#same-order .item-list');
   const intialLength = $itemList.find('li').length;
+  
   $('#same-order .new-item').placeit($itemList, -1);
   $('#same-order .new-item').placeit($itemList, -1);
   $('#same-order .new-item').placeit($itemList, -1);
@@ -76,6 +81,7 @@ QUnit.test( "Same order", function( assert ) {
   $('#same-order .new-item').placeit($itemList, -1);
   $('#same-order .new-item').placeit($itemList, -1);
   $('#same-order .new-item').placeit($itemList, -1);
+
   let $newItem = $('#same-order .new-item').placeit($itemList, -1);
 
   assert.equal($itemList.find('li').length, intialLength);
