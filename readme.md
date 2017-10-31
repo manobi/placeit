@@ -3,7 +3,7 @@ Move the element wherever you want and restore it to the original place.
 
 ## API
 
-#### HTML
+#### HTML:
 ``` HTML
 <div class="test" id="restore">
   <li class="new-item">New item</li>
@@ -15,13 +15,42 @@ Move the element wherever you want and restore it to the original place.
 </div>
 ```
 
-#### Javascript
+#### Placing
 ```javascript
 // Moves the 'new-item' to the beggining of the list
 let $newItem = $('#restore .new-item').placeit($('#restore .item-list'), 0);
+```
 
+#### Result:
+``` HTML
+<div class="test" id="restore">
+  <!-- Item original location -->
+  <ul class="item-list">
+    <li class="new-item">New item</li> <!-- Have being moved to here -->
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul>
+</div>
+```
+
+#### Restoring
+```javascript
 // Restore it's original position outside the list
 $newItem.restore();
+```
+
+#### Result:
+``` HTML
+<div class="test" id="restore">
+  <li class="new-item">New item</li><!-- It's back -->
+  <ul class="item-list">
+     <!-- No more here :( -->
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul>
+</div>
 ```
 
 ## Examples:
